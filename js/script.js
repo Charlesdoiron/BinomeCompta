@@ -1,8 +1,9 @@
 (function() {
-    let btn = document.querySelector('.fa-add');
+    let btn = document.querySelector('#add-project');
     let btnModify = [...document.querySelectorAll('.fa-pencil')]
     let tbody = document.querySelector('tbody')
     let tr = [...tbody.querySelectorAll('tr')]
+    const modalNouveauProjet = document.querySelector('#modalNouveauProjet')
 
     let dataClient = document.querySelector('[data-mission-client]');
     let dataProjet = document.querySelector('[data-mission-projet]');
@@ -11,37 +12,11 @@
     let dataAe = document.querySelector('[data-mission-ae]');
 
     // ADD PROJECT
-    function popUp() {
-        // alert('Ajout d\'un projet')
-        let trLenght = tr.length
-        let monTexte = `
-
-                                <td data-mission-client contenteditable='false'>
-                                </td>
-                                <td  data-mission-projet contenteditable='false'>
-                                </td>
-                                <td data-mission-prix contenteditable='false'>
-                                </td>
-                                <td data-mission-hopwork contenteditable='false'>
-                                </td>
-                                <td data-mission-ae contenteditable='false'>
-                                </td>
-                                <td>
-                                    <i class="fa fa-pencil" aria-hidden="false"></i>
-                                </td>
-                      `
-        tbody.insertRow(trLenght).classList.add('mission')
-        let trClassMissionAjout = tbody.rows[trLenght]
-        trClassMissionAjout.innerHTML = monTexte
-        btnModify.push(trClassMissionAjout.querySelector('.fa-pencil'))
-        tr.push(trClassMissionAjout);
-        updateBtnModify(btnModify)
-
-    };
-    btn.addEventListener('click', popUp);
 
 
-    // EDITABLE 
+
+
+    // EDITABLE
 
     function editable() {
         let trSurLequelJeTaffe = tr[btnModify.indexOf(this)]
@@ -92,11 +67,11 @@
 
     // Datas
 
-    dataClient.textContent = "Lapeyre"
+/*    dataClient.textContent = "Lapeyre"
     dataProjet.textContent = "Intégration #1"
     let prix = dataPrix.textContent = 4700
     let hopwork = dataHopwork.textContent = Math.round(prix * 0.12)
-    dataAe.textContent = Math.round((prix - hopwork) * 0.249)
+    dataAe.textContent = Math.round((prix - hopwork) * 0.249)*/
 
 
     // function dataPrompt(argument) {
@@ -104,3 +79,5 @@
     //     dataClient.textContent = data
     // }
 })();
+
+
