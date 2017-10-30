@@ -2,142 +2,142 @@
 <html>
 
 <head>
-    <title>Binome Comptabilité</title>
-    <meta charset="utf-8">
+  <title>Binome Comptabilité</title>
+  <meta charset="utf-8">
 
-    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/home.css">
+  <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/home.css">
 
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
 </head>
 
 <body>
-    <div class="col-md-12">
+  <div class="col-md-12">
+    <div class="row">
+      <div class="col-md-10 table__container ">
         <div class="row">
-            <div class="col-md-10 table__container ">
-                <div class="row">
-                    <table class=" centered ">
-                        <thead class="thead">
-                            <tr>
-                                <th>Nom</th>
-                                <th>Projet</th>
-                                <th>Prix</th>
-                                <th>% Hopwork</th>
-                                <th>% Ae</th>
-                                <th>Bénéfice</th>
-                            </tr>
-                        </thead>
-                        <tbody>
+          <table class=" centered">
+            <thead class="thead">
+              <tr>
+                <th>Nom</th>
+                <th>Projet</th>
+                <th>Prix</th>
+                <th>% Hopwork</th>
+                <th>% Ae</th>
+                <th>Bénéfice</th>
+              </tr>
+            </thead>
+            <tbody>
 
-                        </tbody>
-                    </table>
-                </div>
-                <div class="col-md-12 text-center">
-                    <i class="fa fa-plus-circle fa-2x fa-add" aria-hidden="true" data-toggle="modal" data-target=".bd-example-modal-lg"></i>
-                </div>
-            </div>
-            <div class="col-md-2 recap__container fixed">
-                <div class="row">
-                    <div class="col-md-12">
-                        <p class="recap__title">Total % Hopwork</p>
-                        <p class="recap__data">1000 €</p>
-                        <p class="recap__title">Total % A-e</p>
-                        <p class="recap__data">1000 €</p>
-                        <p class="recap__title">Restant avant plafond</p>
-                        <p class="recap__data">6890 €</p>
-                    </div>
-                </div>
-            </div>
+            </tbody>
+          </table>
         </div>
-    </div>
-
-
-    <!-- Modal création nouveau projet -->
-
-      <div id="modalNouveauProjet" class="modal fade bd-example-modal-lg show" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
-        <div class="modal-dialog modal-lg show">
-          <div class="modal-content col-md-12">
-            <div class="row-fluid input-fields">
-
-              <!-- Nom du client -->
-              <div class="input-field">
-                <input type="text" id="client-name" placeholder="Bob l'éponge">
-                <label for="client-name" class="active">Nom du client</label>
-              </div>
-
-              <!-- Nom du projet -->
-              <div class="input-field">
-                <input type="text" id="project-name" placeholder="Frotter">
-                <label for="project-name" class="active">Nom du projet</label>
-              </div>
-
-              <!-- Compta -->
-              <div class="prices-content">
-                <!-- Prix facturé -->
-                <!-- HT -->
-                <div class="input-field">
-                  <input type="text" id="invoice-HT" class="input-currency" placeholder="€"> <!-- Script MAJ valeurs TTC ou HT -->
-                  <label for="invoice-HT" class="active">Facture HT</label>
-                </div>
-                <!-- TTC -->
-                <div class="input-field">
-                  <input type="text" id="invoice-TTC" class="input-currency" placeholder="€"> <!-- Script MAJ valeurs TTC ou HT -->
-                  <label for="invoice-TTC" class="active">Facture TTC</label>
-                </div>
-                <!-- Checkbox Hopwork -->
-                <div class="hopwork">
-                  <input type="checkbox" class="filled-in hopwork-checkbox hopwork" id="hopwork" checked="checked" />
-                  <label for="hopwork"  class="active">Hopwork ?</label><br>
-                  <span class="hopwork-description">Charges Hopwork: 10%</span><br>
-                  <span class="hopwork-description" id= "hopwork-charges"></span>
-                </div>
-                <!-- Frais HT -->
-                <div class="input-field">
-                  <input type="text" id="frais-TH" class="input-currency" placeholder="€"> <!-- Script MAJ valeurs TTC ou HT -->
-                  <label for="frais-TH" class="active">Frais HT</label>
-                </div>
-              </div>
-
-
-              <!-- Date picker -->
-              <div class="input-field">
-
-                <!-- Meta-data -->
-                <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-                <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-                <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-                <script>
-                  $( function() {
-                    $( "#datepicker" ).datepicker();
-                  } );
-                </script>
-
-                <!-- HTML code -->
-                <input type="text" id="datepicker" placeholder="JJ/MM/YYYY">
-                <label for="datepicker" class="active">Date</label>
-              </div>
-            </div>
-
-            <!-- Boutons -->
-            <div class="row-fluid buttons">
-              <button type="button" class="btn btn-primary" data-toggle="submit" id="add-project" data-dismiss="modal">Valider</button>
-              <button type="button" class="btn btn-primary" data-toggle="cancel" data-dismiss="modal">Annuler</button>
-            </div>
-
-
+        <div class="col-md-12 text-center">
+          <i class="fa fa-plus-circle fa-2x fa-add" aria-hidden="true" data-toggle="modal" data-target=".bd-example-modal-lg"></i>
+        </div>
+      </div>
+      <div class="col-md-2 recap__container fixed">
+        <div class="row">
+          <div class="col-md-12">
+            <p class="recap__title">Total % Hopwork</p>
+            <p class="recap__data">1000 €</p>
+            <p class="recap__title">Total % A-e</p>
+            <p class="recap__data">1000 €</p>
+            <p class="recap__title">Restant avant plafond</p>
+            <p class="recap__data">6890 €</p>
           </div>
         </div>
       </div>
     </div>
+  </div>
 
-    <script src="js/modal.js"></script>
-    <script type="text/javascript" src="js/script.js"></script>
+
+  <!-- Modal création nouveau projet -->
+
+  <div id="modalNouveauProjet" class="modal fade bd-example-modal-lg show" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+    <div class="modal-dialog modal-lg show">
+      <div class="modal-content col-md-12">
+        <div class="row-fluid input-fields">
+
+          <!-- Nom du client -->
+          <div class="input-field">
+            <input type="text" id="client-name" placeholder="Bob l'éponge">
+            <label for="client-name" class="active">Nom du client</label>
+          </div>
+
+          <!-- Nom du projet -->
+          <div class="input-field">
+            <input type="text" id="project-name" placeholder="Frotter">
+            <label for="project-name" class="active">Nom du projet</label>
+          </div>
+
+          <!-- Compta -->
+          <div class="prices-content">
+            <!-- Prix facturé -->
+            <!-- HT -->
+            <div class="input-field">
+              <input type="text" id="invoice-HT" class="input-currency" placeholder="€"> <!-- Script MAJ valeurs TTC ou HT -->
+              <label for="invoice-HT" class="active">Facture HT</label>
+            </div>
+            <!-- TTC -->
+            <div class="input-field">
+              <input type="text" id="invoice-TTC" class="input-currency" placeholder="€"> <!-- Script MAJ valeurs TTC ou HT -->
+              <label for="invoice-TTC" class="active">Facture TTC</label>
+            </div>
+            <!-- Checkbox Hopwork -->
+            <div class="hopwork">
+              <input type="checkbox" class="filled-in hopwork-checkbox hopwork" id="hopwork" checked="checked" />
+              <label for="hopwork"  class="active">Hopwork ?</label><br>
+              <span class="hopwork-description">Charges Hopwork: 10%</span><br>
+              <span class="hopwork-description" id= "hopwork-charges"></span>
+            </div>
+            <!-- Frais HT -->
+            <div class="input-field">
+              <input type="text" id="frais-TH" class="input-currency" placeholder="€"> <!-- Script MAJ valeurs TTC ou HT -->
+              <label for="frais-TH" class="active">Frais HT</label>
+            </div>
+          </div>
+
+
+          <!-- Date picker -->
+          <div class="input-field">
+
+            <!-- Meta-data -->
+            <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+            <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+            <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+            <script>
+              $( function() {
+                $( "#datepicker" ).datepicker();
+              } );
+            </script>
+
+            <!-- HTML code -->
+            <input type="text" id="datepicker" placeholder="JJ/MM/YYYY">
+            <label for="datepicker" class="active">Date</label>
+          </div>
+        </div>
+
+        <!-- Boutons -->
+        <div class="row-fluid buttons">
+          <button type="button" class="btn btn-primary" data-toggle="submit"  id="add-project" data-dismiss="modal">Valider</button>
+          <button type="button" class="btn btn-primary" data-toggle="cancel" data-dismiss="modal">Annuler</button>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="js/modal.js"></script>
+<script type="text/javascript" src="js/script.js"></script>
 
 
 </body>

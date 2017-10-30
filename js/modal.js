@@ -1,56 +1,124 @@
 (function () {
-  let btnModify = [...document.querySelectorAll('.fa-pencil')]
-  let tbody = document.querySelector('tbody')
-  let tr = [...tbody.querySelectorAll('tr')]
+  //Variables
+  const table = document.querySelector('tbody');
+  const btnAddRow = document.querySelector('.fa-plus-circle');
+  const btnEditRow = table.querySelectorAll('.fa-pencil');
+  let tdss = [...table.querySelectorAll('.mission')];
+  const submit = document.querySelector('#add-project');
+
+console.log(tdss)
+  const tds = []
+  tdss.forEach(td => {
+   tds.push(td.innerHTML)
+  })
+  console.log(tds)
 
 
-  // ADD PROJECT
+    //   function populateList(plates = [], platesList) {
+    // platesList.innerHTML = plates.map((plate, i) => {
+    //   return `
+    //     <li>
+    //       <input type="checkbox" data-index=${i} id="item${i}" ${plate.done ? 'checked' : ''} />
+    //       <label for="item${i}">${plate.text}</label>
+    //     </li>
+    //   `;
+    // }).join('');
 
+  //Functions
 
+  function addRow(e) {
 
-
-  // EDITABLE
-
-  function editable() {
-      let trSurLequelJeTaffe = tr[btnModify.indexOf(this)]
-      console.log(btnModify.indexOf(this))
-      let tds = trSurLequelJeTaffe.querySelectorAll('td')
-
-      tds.forEach(td => {
-          if (td.getAttribute('contenteditable') == 'false') {
-              td.setAttribute('contenteditable', 'true')
-
-          } else if (td.getAttribute('contenteditable') == 'true') {
-              td.setAttribute('contenteditable', 'false')
-          }
-      })
+   const createRow =`
+   <tr class="mission">
+                <td data-mission-client contenteditable='false'>
+                </td>
+                <td  data-mission-projet contenteditable='false'>
+                </td>
+                <td data-mission-prix contenteditable='false'>
+                </td>
+                <td data-mission-hopwork contenteditable='false'>
+                </td>
+                <td data-mission-ae contenteditable='false'>
+                </td>
+                <td class="fa-td">
+                  <i class="fa fa-pencil" aria-hidden="false"></i>
+                </td>
+              </tr>`;
+  tds.push(createRow);
+  console.log(tds)
+  table.innerHTML = tds.join('')
   }
 
 
-  function toggleFa() {
-      console.log(this)
 
-      if (this.classList.contains('fa-pencil')) {
-          this.classList.remove("fa-pencil")
-          this.classList.add("fa-check")
-      } else if (this.classList.contains('fa-check')) {
-          this.classList.remove("fa-check")
-          this.classList.add("fa-pencil")
+
+    //Mettre chaque élément de la modale dans une nouvelle ligne du tableau
+    //Faire que cette nouvelle ligne soit incluse dans l'eventListener
+
+
+  function editRow(e) {
+
+    //On a cliqué sur le talbeau : vérifier qu'on a cliqué sur le bouton, et pas sur une case au pif.
+
+    //On sélectionne le bouton Edit
+    const target = e.target;
+    let btnEdit
+
+    //Si on clique sur le TD, on sélectione l'enfant
+    if (target.classList.contains('fa-td')) {
+      btnEdit = target.firstChild.nextSibling;
+      //Si on clique sur l'enfant, on est content
+    } else if (target.classList.contains('fa')) {
+      btnEdit = target;
+    } else {
+      return
+    }
+
+    let makeContentEditable = false
+
+    if (btnEdit.classList.contains('fa-pencil')) {
+
+        //Toggle le bouton
+        btnEdit.classList.remove('fa-pencil');
+        btnEdit.classList.add('fa-check');
+
+        //Autoriser le contenteditable
+        makeContentEditable = true;
+
+      } else if (btnEdit.classList.contains('fa-check')) {
+        //Toggle le bouton
+        btnEdit.classList.remove('fa-check');
+        btnEdit.classList.add('fa-pencil');
+
+      } else {
+        return;
       }
-  };
+    //Rendre les contenteditable='true' sur le bon <tr>
+      const tdEditables = [...btnEdit.parentElement.parentElement.children]
+      for (var i = 0; i < tdEditables.length - 1; i++) {
+        const tdEditable = tdEditables[i];
+        if (makeContentEditable) {
+          tdEditable.contentEditable = "true";
+        }
+        else {
+          tdEditable.contentEditable = "false";
+        }
+      }
+      //Sauvegarder les nouvelles entrées éditées
+      // Remettre
+    }
+  // Event Listeners
+  table.addEventListener('click', editRow);
+  submit.addEventListener('click', addRow);
 
-  function updateBtnModify(btnModify) {
-
-      btnModify.forEach((element) => {
-          element.addEventListener('click', editable);
-      });
-      btnModify.forEach((element) => {
-          element.addEventListener('click', toggleFa);
-      });
+})();
 
 
-  }
-  updateBtnModify(btnModify)
+
+
+
+
+
 
 
   //Script MAJ valeurs TTC ou HT & MAJ charges Hopwork
@@ -111,30 +179,6 @@ console.log("script: "+invoiceTTC)
 
 
 
-function popUp() {
-    // alert('Ajout d\'un projet')
-    let trLenght = tr.length
-    let monTexte = `
-
-                            <td data-mission-client contenteditable='false'>
-                            </td>
-                            <td  data-mission-projet contenteditable='false'>
-                            </td>
-                            <td data-mission-prix contenteditable='false'>
-                            </td>
-                            <td data-mission-hopwork contenteditable='false'>
-                            </td>
-                            <td data-mission-ae contenteditable='false'>
-                            </td>
-                            <td>
-                                <i class="fa fa-pencil" aria-hidden="false"></i>
-                            </td>
-                  `
-    tbody.insertRow(trLenght).classList.add('mission')
-    let trClassMissionAjout = tbody.rows[trLenght]
-    trClassMissionAjout.innerHTML = monTexte
-    btnModify.push(trClassMissionAjout.querySelector('.fa-pencil'))
-    tr.push(trClassMissionAjout);
 
     let dataClient = trClassMissionAjout.querySelector('[data-mission-client]');
     let dataProjet = trClassMissionAjout.querySelector('[data-mission-projet]');
@@ -148,24 +192,7 @@ function popUp() {
     dataHopwork.innerHTML = hopworkCharges.value
     dataAe.innerHTML = parseFloat(invoiceHT.value) * 0.249
 
-    updateBtnModify(btnModify)
 
 
 
 
-};
-btn.addEventListener('click', popUp);
-
-
-
-
-
-
-
-
-
-
-
-
-
-})();
