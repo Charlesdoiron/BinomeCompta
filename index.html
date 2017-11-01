@@ -15,6 +15,11 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
+
+
+
 </head>
 
 <body>
@@ -34,7 +39,7 @@
               </tr>
             </thead>
             <tbody>
-
+             
             </tbody>
           </table>
         </div>
@@ -67,13 +72,13 @@
 
           <!-- Nom du client -->
           <div class="input-field">
-            <input type="text" id="client-name" placeholder="Bob l'éponge">
+            <input type="text" id="client-name" placeholder="Adidas">
             <label for="client-name" class="active">Nom du client</label>
           </div>
 
           <!-- Nom du projet -->
           <div class="input-field">
-            <input type="text" id="project-name" placeholder="Frotter">
+            <input type="text" id="project-name" placeholder="Mise à jour">
             <label for="project-name" class="active">Nom du projet</label>
           </div>
 
@@ -95,12 +100,12 @@
               <input type="checkbox" class="filled-in hopwork-checkbox hopwork" id="hopwork" checked="checked" />
               <label for="hopwork"  class="active">Hopwork ?</label><br>
               <span class="hopwork-description">Charges Hopwork: 10%</span><br>
-              <span class="hopwork-description" id= "hopwork-charges"></span>
+              <span class="hopwork-description" id="hopwork-charges"></span>
             </div>
             <!-- Frais HT -->
             <div class="input-field">
-              <input type="text" id="frais-TH" class="input-currency" placeholder="€"> <!-- Script MAJ valeurs TTC ou HT -->
-              <label for="frais-TH" class="active">Frais HT</label>
+              <input type="text" id="frais" class="input-currency" placeholder="€"> <!-- Script MAJ valeurs TTC ou HT -->
+              <label for="frais" class="active">Frais HT</label>
             </div>
           </div>
 
@@ -136,8 +141,23 @@
   </div>
 </div>
 
-<script src="js/modal.js"></script>
-<script type="text/javascript" src="js/script.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyDDFcg9rmgLmmyklLOCUWM5lHAdhn6jKJ8",
+    authDomain: "binome-efec4.firebaseapp.com",
+    databaseURL: "https://binome-efec4.firebaseio.com",
+    projectId: "binome-efec4",
+    storageBucket: "",
+    messagingSenderId: "612419088876"
+  };
+  firebase.initializeApp(config);
+</script>
+
+<script src="js/form.js"></script>
+<script src="js/InsideModal.js"></script>
+<script src="js/data.js"></script>
+
 
 
 </body>
